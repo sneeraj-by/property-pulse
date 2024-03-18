@@ -6,12 +6,7 @@ export const GET = async (request) => {
   try {
     await connectDB();
     const properties = await Property.find({});
-    return NextResponse.json(
-      {
-        properties,
-      },
-      { status: 200 }
-    );
+    return new Response(JSON.stringify(properties), { status: 200 });
   } catch (error) {
     console.log(error);
     return new Response(error.message, { status: 500 });
